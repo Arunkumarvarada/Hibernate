@@ -1,0 +1,7 @@
+To Build following project
+
+Using Maven command
+
+mvn clean install
+
+
