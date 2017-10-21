@@ -23,9 +23,10 @@ public class HibernateUtilMySql {
 
 				Map<String, Object> settings = new HashMap<String, Object>();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate5?useSSL=false");
+				settings.put(Environment.URL,
+						"jdbc:mysql://localhost:3306/hibernate5?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
 				settings.put(Environment.USER, "root");
-				settings.put(Environment.PASS, "admin");
+				settings.put(Environment.PASS, "root");
 				settings.put(Environment.HBM2DDL_AUTO, "update");
 				settings.put(Environment.USE_SECOND_LEVEL_CACHE, true);
 				settings.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
@@ -48,4 +49,9 @@ public class HibernateUtilMySql {
 		return sessionFactory;
 	}
 
+	public static void shutdown() {
+		if (registry != null) {
+			StandardServiceRegistryBuilder.destroy(registry);
+		}
+	}
 }
