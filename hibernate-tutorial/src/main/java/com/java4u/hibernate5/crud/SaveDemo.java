@@ -21,7 +21,9 @@ public class SaveDemo {
 		try {
 			session.beginTransaction();
 			session.save(emp);
+			session.flush();
 			session.getTransaction().commit();
+			session.close();
 
 		} catch (Exception e) {
 			session.getTransaction().rollback();

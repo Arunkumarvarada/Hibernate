@@ -32,6 +32,9 @@ public class HibernateUtilMySql {
 				settings.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
 				settings.put("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
 
+
+
+				
 				registryBuilder.applySettings(settings);
 				registry = registryBuilder.build();
 
