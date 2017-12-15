@@ -1,20 +1,20 @@
 package com.java4u.hibernate5.imageLoading;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.engine.jdbc.BlobProxy;
 
 import com.java4u.hibernate5.model.Product;
 import com.java4u.hibernate5.util.HibernateUtilMySql;
 
-public class ImageSavingLoadingDemo {
+public class ImageLoading {
 
 	public static void main(String[] args) {
 		Session session = null;
@@ -24,12 +24,11 @@ public class ImageSavingLoadingDemo {
 			transaction = session.getTransaction();
 			transaction.begin();
 
-			Product product = new Product();
-			product.setName("Java - The Complete Reference");
-			session.doWork(conn -> {
-				product.setImage(BlobProxy.generateProxy(getImage()));
-			});
-			session.save(product);
+			Product product = session.get(Product.class, 1L);
+			System.out.println("Product Name: " + product.getName());
+
+			InputStream imageStream = product.getImage().getBinaryStream();
+			saveImage(imageStream);
 			transaction.commit();
 
 			System.out.println("Product is saved successfully.");
@@ -46,22 +45,17 @@ public class ImageSavingLoadingDemo {
 			}
 		}
 
-		HibernateUtilMySql.shutdown();
 	}
 
-	   public static byte[] getImage() {
-		      File file =new File("Java.png");
-		      if(file.exists()){
-		         try {
-		            BufferedImage bufferedImage=ImageIO.read(file);
-		            ByteArrayOutputStream byteOutStream=new ByteArrayOutputStream();
-		            ImageIO.write(bufferedImage, "png", byteOutStream);
-		            return byteOutStream.toByteArray();
-		         } catch (IOException e) {
-		            e.printStackTrace();
-		         }
-		      }
-		      return null;
-		   }
+	private static void saveImage(InputStream imageStream) {
+		File file = new File("ouput.png");
+		try (FileOutputStream outputStream = new FileOutputStream(file)) {
+			 BufferedImage bufferedImage = ImageIO.read(imageStream);
+	         ImageIO.write(bufferedImage, "png", outputStream);
+	         System.out.println("Image file location: "+file.getCanonicalPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
