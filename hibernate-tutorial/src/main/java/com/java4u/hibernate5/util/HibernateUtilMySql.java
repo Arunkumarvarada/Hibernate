@@ -13,6 +13,7 @@ import org.hibernate.cfg.Environment;
 import com.java4u.hibernate5.model.Address;
 import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Employee;
+import com.java4u.hibernate5.model.Product;
 
 public class HibernateUtilMySql {
 	private static StandardServiceRegistry registry;
@@ -35,12 +36,15 @@ public class HibernateUtilMySql {
 				settings.put(Environment.SHOW_SQL, true);
 				settings.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
 				settings.put("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
-				
+
 				registryBuilder.applySettings(settings);
 				registry = registryBuilder.build();
 
-				MetadataSources sources = new MetadataSources(registry).addAnnotatedClass(Employee.class)
-						.addAnnotatedClass(Address.class).addAnnotatedClass(Customer.class);
+				MetadataSources sources = new MetadataSources(registry)
+						.addAnnotatedClass(Employee.class)
+						.addAnnotatedClass(Address.class)
+						.addAnnotatedClass(Customer.class)
+						.addAnnotatedClass(Product.class);
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
 
