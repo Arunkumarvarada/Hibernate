@@ -11,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 
 import com.java4u.hibernate5.model.Address;
+import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Employee;
 
 public class HibernateUtilMySql {
@@ -39,7 +40,7 @@ public class HibernateUtilMySql {
 				registry = registryBuilder.build();
 
 				MetadataSources sources = new MetadataSources(registry).addAnnotatedClass(Employee.class)
-						.addAnnotatedClass(Address.class);
+						.addAnnotatedClass(Address.class).addAnnotatedClass(Customer.class);
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
 
