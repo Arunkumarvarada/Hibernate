@@ -44,15 +44,15 @@ public class ImageLoading {
 				session.close();
 			}
 		}
-
+		HibernateUtilMySql.shutdown();
 	}
 
 	private static void saveImage(InputStream imageStream) {
 		File file = new File("ouput.png");
 		try (FileOutputStream outputStream = new FileOutputStream(file)) {
-			 BufferedImage bufferedImage = ImageIO.read(imageStream);
-	         ImageIO.write(bufferedImage, "png", outputStream);
-	         System.out.println("Image file location: "+file.getCanonicalPath());
+			BufferedImage bufferedImage = ImageIO.read(imageStream);
+			ImageIO.write(bufferedImage, "png", outputStream);
+			System.out.println("Image file location: " + file.getCanonicalPath());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
