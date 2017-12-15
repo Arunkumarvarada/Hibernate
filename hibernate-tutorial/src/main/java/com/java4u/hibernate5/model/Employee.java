@@ -8,37 +8,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-
-
 @Cacheable
-@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Entity
-@Table(name="EMPLOYEE")
-public class Employee implements Serializable{
+@NamedQuery(name = "Employee.byid", query = "from Employee where id=?")
+@NamedNativeQuery(name = "Employee.byName", query = "select * from Employee where emp_name=?", resultClass = Employee.class)
+@Table(name = "EMPLOYEE")
+public class Employee implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name= "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private int id;
-	
-	@Column(name= "emp_name")
+
+	@Column(name = "emp_name")
 	private String name;
-	
-	@Column(name= "emp_Address")
+
+	@Column(name = "emp_Address")
 	private String empAddress;
-	
-	@Column(name= "phone")
+
+	@Column(name = "phone")
 	private String phone;
-	
-	@Column(name= "email_ID")
+
+	@Column(name = "email_ID")
 	private String email;
 
 	public Employee() {
-		
+
 	}
 
 	public int getId() {
@@ -86,7 +88,5 @@ public class Employee implements Serializable{
 		return "Employee [id=" + id + ", name=" + name + ", empAddress=" + empAddress + ", phone=" + phone + ", email="
 				+ email + "]";
 	}
-	
-	
 
 }
