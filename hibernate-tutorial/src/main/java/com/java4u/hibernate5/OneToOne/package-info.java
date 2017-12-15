@@ -5,4 +5,4 @@
  * @author dev
  *
  */
-package com.java4u.hibernate5.criteria;
+package com.java4u.hibernate5.OneToOne;
