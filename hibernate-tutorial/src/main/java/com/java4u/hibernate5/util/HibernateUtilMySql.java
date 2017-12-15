@@ -14,6 +14,8 @@ import com.java4u.hibernate5.model.Address;
 import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Employee;
 import com.java4u.hibernate5.model.Product;
+import com.java4u.hibernate5.model.User;
+import com.java4u.hibernate5.model.UserDetails;
 
 public class HibernateUtilMySql {
 	private static StandardServiceRegistry registry;
@@ -40,11 +42,10 @@ public class HibernateUtilMySql {
 				registryBuilder.applySettings(settings);
 				registry = registryBuilder.build();
 
-				MetadataSources sources = new MetadataSources(registry)
-						.addAnnotatedClass(Employee.class)
-						.addAnnotatedClass(Address.class)
-						.addAnnotatedClass(Customer.class)
-						.addAnnotatedClass(Product.class);
+				MetadataSources sources = new MetadataSources(registry).addAnnotatedClass(Employee.class)
+						.addAnnotatedClass(Address.class).addAnnotatedClass(Customer.class)
+						.addAnnotatedClass(Product.class).addAnnotatedClass(User.class)
+						.addAnnotatedClass(UserDetails.class);
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
 
