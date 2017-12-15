@@ -1,15 +1,15 @@
-package com.java4u.hibernate5;
+package com.java4u.hibernate5.configuration;
 
 import org.hibernate.Session;
 
-import com.java4u.hibernate5.util.HibernateUtilMySql;
+import com.java4u.hibernate5.util.HibernateUtil;
 
 /**
  * @author dev
  */
-public class MainApp {
+public class HibernateWithConfigFile {
   public static void main(String[] args) {
-    Session session = HibernateUtilMySql.getSessionFactory().openSession();
+    Session session = HibernateUtil.getSessionFactory().openSession();
     session.beginTransaction();
 
     // Check database version
@@ -22,6 +22,6 @@ public class MainApp {
     session.close();
 
     
-    HibernateUtilMySql.shutdown();
+    HibernateUtil.shutdown();
   }
 }
