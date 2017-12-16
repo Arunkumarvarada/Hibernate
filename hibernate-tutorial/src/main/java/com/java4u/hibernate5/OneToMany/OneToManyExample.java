@@ -1,4 +1,4 @@
-package com.java4u.hibernate5.OneToOne;
+package com.java4u.hibernate5.OneToMany;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

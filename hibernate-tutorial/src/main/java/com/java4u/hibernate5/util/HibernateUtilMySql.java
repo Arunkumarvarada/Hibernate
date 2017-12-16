@@ -11,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 
 import com.java4u.hibernate5.model.Address;
+import com.java4u.hibernate5.model.College;
 import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Department;
 import com.java4u.hibernate5.model.DepartmentWorker;
@@ -19,6 +20,7 @@ import com.java4u.hibernate5.model.ParkingSpace;
 import com.java4u.hibernate5.model.ParkingUser;
 import com.java4u.hibernate5.model.Product;
 import com.java4u.hibernate5.model.Student;
+import com.java4u.hibernate5.model.Teachers;
 import com.java4u.hibernate5.model.User;
 import com.java4u.hibernate5.model.UserDetails;
 import com.java4u.hibernate5.model.Vehicle;
@@ -54,7 +56,8 @@ public class HibernateUtilMySql {
 						.addAnnotatedClass(UserDetails.class).addAnnotatedClass(Department.class)
 						.addAnnotatedClass(DepartmentWorker.class).addAnnotatedClass(Student.class)
 						.addAnnotatedClass(Vehicle.class).addAnnotatedClass(ParkingSpace.class)
-						.addAnnotatedClass(ParkingUser.class);
+						.addAnnotatedClass(ParkingUser.class).addAnnotatedClass(College.class)
+						.addAnnotatedClass(Teachers.class);
 
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
