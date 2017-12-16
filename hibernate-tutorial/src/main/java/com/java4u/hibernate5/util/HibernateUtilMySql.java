@@ -16,6 +16,8 @@ import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Department;
 import com.java4u.hibernate5.model.DepartmentWorker;
 import com.java4u.hibernate5.model.Employee;
+import com.java4u.hibernate5.model.ParkingCompany;
+import com.java4u.hibernate5.model.ParkingSite;
 import com.java4u.hibernate5.model.ParkingSpace;
 import com.java4u.hibernate5.model.ParkingUser;
 import com.java4u.hibernate5.model.Product;
@@ -57,7 +59,8 @@ public class HibernateUtilMySql {
 						.addAnnotatedClass(DepartmentWorker.class).addAnnotatedClass(Student.class)
 						.addAnnotatedClass(Vehicle.class).addAnnotatedClass(ParkingSpace.class)
 						.addAnnotatedClass(ParkingUser.class).addAnnotatedClass(College.class)
-						.addAnnotatedClass(Teachers.class);
+						.addAnnotatedClass(Teachers.class).addAnnotatedClass(ParkingCompany.class)
+						.addAnnotatedClass(ParkingSite.class);
 
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
