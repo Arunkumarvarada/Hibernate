@@ -12,8 +12,10 @@ import org.hibernate.cfg.Environment;
 
 import com.java4u.hibernate5.model.Address;
 import com.java4u.hibernate5.model.Animal;
+import com.java4u.hibernate5.model.CheuqePayment;
 import com.java4u.hibernate5.model.College;
 import com.java4u.hibernate5.model.Contract_Worker;
+import com.java4u.hibernate5.model.CreaditCardPayment;
 import com.java4u.hibernate5.model.Customer;
 import com.java4u.hibernate5.model.Department;
 import com.java4u.hibernate5.model.DepartmentWorker;
@@ -22,6 +24,7 @@ import com.java4u.hibernate5.model.ParkingCompany;
 import com.java4u.hibernate5.model.ParkingSite;
 import com.java4u.hibernate5.model.ParkingSpace;
 import com.java4u.hibernate5.model.ParkingUser;
+import com.java4u.hibernate5.model.Payment;
 import com.java4u.hibernate5.model.PetAnimal;
 import com.java4u.hibernate5.model.Product;
 import com.java4u.hibernate5.model.Regular_Worker;
@@ -69,7 +72,8 @@ public class HibernateUtilMySql {
 						.addAnnotatedClass(ParkingSite.class).addAnnotatedClass(Worker.class)
 						.addAnnotatedClass(Regular_Worker.class).addAnnotatedClass(Contract_Worker.class)
 						.addAnnotatedClass(Animal.class).addAnnotatedClass(PetAnimal.class)
-						.addAnnotatedClass(WildAnimal.class);
+						.addAnnotatedClass(WildAnimal.class).addAnnotatedClass(CheuqePayment.class)
+						.addAnnotatedClass(CreaditCardPayment.class).addAnnotatedClass(Payment.class);
 
 				Metadata metadata = sources.getMetadataBuilder().build();
 				sessionFactory = metadata.getSessionFactoryBuilder().build();
