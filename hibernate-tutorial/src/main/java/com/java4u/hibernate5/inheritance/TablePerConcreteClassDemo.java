@@ -3,6 +3,9 @@ package com.java4u.hibernate5.inheritance;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.java4u.hibernate5.model.Animal;
+import com.java4u.hibernate5.model.PetAnimal;
+import com.java4u.hibernate5.model.WildAnimal;
 import com.java4u.hibernate5.util.HibernateUtilMySql;
 
 public class TablePerConcreteClassDemo {
@@ -13,6 +16,23 @@ public class TablePerConcreteClassDemo {
 		try {
 			session = HibernateUtilMySql.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
+
+			Animal animal = new Animal();
+			animal.setName("Omnivore");
+
+			WildAnimal wildAnimal = new WildAnimal();
+			wildAnimal.setName("Tiger Breed");
+			wildAnimal.setWildAnimalColor("DARK YELLOW");
+			wildAnimal.setWildAnimalName("BENGAL TIGER");
+
+			PetAnimal petAnimal = new PetAnimal();
+			petAnimal.setName("Dog Breed");
+			petAnimal.setColor("BLACK");
+			petAnimal.setPetName("Jessy");
+
+			session.save(animal);
+			session.save(petAnimal);
+			session.save(wildAnimal);
 
 			transaction.commit();
 		} catch (Exception e) {
