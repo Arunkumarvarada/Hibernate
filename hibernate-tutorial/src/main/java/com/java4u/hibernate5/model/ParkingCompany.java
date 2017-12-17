@@ -21,9 +21,9 @@ public class ParkingCompany {
 
 	@Column(name = "parkingCompanyName")
 	private String parkingCompanyName;
-	
-	@ManyToMany(mappedBy="parkingCompanies")
-	private List<ParkingSite> sites= new ArrayList<>();
+
+	@ManyToMany(mappedBy = "parkingCompanies")
+	private List<ParkingSite> sites = new ArrayList<>();
 
 	public int getParkingCompanyId() {
 		return parkingCompanyId;
@@ -48,6 +48,5 @@ public class ParkingCompany {
 	public void setSites(List<ParkingSite> sites) {
 		this.sites = sites;
 	}
-	
-	
+
 }
